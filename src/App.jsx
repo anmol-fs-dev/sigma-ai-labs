@@ -15,6 +15,7 @@ import Services from './components/Services'
 import Work from './components/Work'
 import About from './components/About'
 import Careers from './components/Careers'
+import GlobalDelivery from './components/GlobalDelivery'
 
 function MainLayout({ children }) {
   return (
@@ -35,6 +36,7 @@ function Home() {
       <ComparisonTable />
       <AgentShowcase />
       <ServiceList />
+      <GlobalDelivery />
       <Portfolio />
       <Testimonials />
     </>

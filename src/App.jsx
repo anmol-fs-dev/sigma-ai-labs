@@ -16,6 +16,7 @@ import Work from './components/Work'
 import About from './components/About'
 import Careers from './components/Careers'
 import GlobalDelivery from './components/GlobalDelivery'
+import CaseStudy from './components/CaseStudy'
 
 function MainLayout({ children }) {
   return (
@@ -49,6 +50,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout><Home /></MainLayout>} />
         <Route path="/work" element={<MainLayout><Work /></MainLayout>} />
+        <Route path="/work/:id" element={<MainLayout><CaseStudy /></MainLayout>} />
         <Route path="/services" element={<MainLayout><Services /></MainLayout>} />
         <Route path="/about" element={<MainLayout><About /></MainLayout>} />
         <Route path="/careers" element={<MainLayout><Careers /></MainLayout>} />

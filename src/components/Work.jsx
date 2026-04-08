@@ -1,54 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { caseStudies } from '../data/caseStudies'
 
 const Work = () => {
-  const projects = [
-    {
-      title: 'Building a Secure Web Gateway Platform for a Cybersecurity Startup',
-      brand: 'Dope Security',
-      description: 'Dope Security, a series A funded cybersecurity startup, approached us to design a new defensive mechanism that makes the core technology of their web gateway cloud-based, next-gen and reliable.',
-      category: 'Cybersecurity',
-      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'
-    },
-    {
-      title: "Powered Saudi Arabia's First Real Estate Trading Platform",
-      brand: 'IBDAX',
-      description: 'IBDAX is Saudi Arabia’s primary house-of-real-estate digital platform that facilitates property ownership exchange through a first-of-its-kind online listing-trading model developed by our engineering team.',
-      category: 'Fintech',
-      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop',
-      reversed: true
-    },
-    {
-      title: 'Developed a Centralized Security Management Platform for Symantec',
-      brand: 'Symantec',
-      description: 'Symantec came to us with a vision to build a comprehensive security management portal for their MSSP (Managed Security Service Platform) customers.',
-      category: 'Cybersecurity',
-      image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop'
-    },
-    {
-      title: "Scaling Enterprise Software Development for Australia's Leading Telecom Provider",
-      brand: 'Telstra (Wipro)',
-      description: 'A major Australian telecommunications company hired our remote team solution to facilitate consistent scale and maintenance of their B2B.',
-      category: 'Telecom',
-      image: 'https://images.unsplash.com/photo-1520333789090-1afc82db536a?q=80&w=2071&auto=format&fit=crop',
-      reversed: true
-    },
-    {
-      title: "Modernizing India's Leading Crypto Exchange: CoinDCX's Flutter Migration Success",
-      brand: 'CoinDCX',
-      description: 'CoinDCX is India’s major crypto platform that required a total revamp of their existing code architecture to Flutter for better performance.',
-      category: 'Crypto, Fintech',
-      image: 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=2069&auto=format&fit=crop'
-    },
-    {
-      title: 'How We Helped Brite Revolutionize Hormone Therapy Access',
-      brand: 'Brite',
-      description: 'By partnering with Brite, we set out to revolutionize hormone therapy access by creating a comprehensive and agile ecosystem that provides effective delivery of essential medical therapies.',
-      category: 'Healthcare',
-      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop',
-      reversed: true
-    }
-  ]
-
   return (
     <div className="work-page">
       <header className="work-header container">
@@ -58,8 +12,8 @@ const Work = () => {
       </header>
 
       <section className="projects-grid container">
-        {projects.map((project, i) => (
-          <div key={i} className={`project-item ${project.reversed ? 'reversed' : ''}`}>
+        {caseStudies.map((project, i) => (
+          <div key={i} className={`project-item ${i % 2 !== 0 ? 'reversed' : ''}`}>
             <div className="project-image-box">
               <img src={project.image} alt={project.brand} />
               <div className="brand-overlay">
@@ -69,8 +23,8 @@ const Work = () => {
             <div className="project-content">
               <p className="project-cat">{project.category}</p>
               <h2 className="project-title">{project.title}</h2>
-              <p className="project-desc">{project.description}</p>
-              <button className="view-case">View case study →</button>
+              <p className="project-desc">{project.overview.substring(0, 160)}...</p>
+              <Link to={`/work/${project.id}`} className="view-case">View case study →</Link>
             </div>
           </div>
         ))}
